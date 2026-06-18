@@ -17,7 +17,7 @@ namespace TaskManagement_CQRS_Pattern.Api.Features.Tasks.Queries.GetAllTasks
 
         public async Task<List<TaskItem>> Handle (GetAllTasksQuery query, CancellationToken ct)
         {
-            return await _appDbContext.TaskItems.ToListAsync();
+            return await _appDbContext.TaskItems.ToListAsync(ct);
         }
     }
 }

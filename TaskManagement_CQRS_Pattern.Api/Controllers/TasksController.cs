@@ -25,7 +25,7 @@ public class TasksController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTask(CreatTaskCommand command)
+    public async Task<IActionResult> CreateTask(CreateTaskCommand command)
     {
         var result = await _mediator.Send(command);
         var message = result > 0 ? "Create successful" : "Create failed";

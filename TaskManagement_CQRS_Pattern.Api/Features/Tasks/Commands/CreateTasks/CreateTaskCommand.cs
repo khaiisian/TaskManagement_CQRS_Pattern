@@ -3,8 +3,15 @@ using TaskManagement_CQRS_Pattern.Db.AppDbContextModels;
 
 namespace TaskManagement_CQRS_Pattern.Api.Features.Tasks.Commands.CreateTasks;
 
-public record CreatTaskCommand(string Title, string Description) : IRequest<int>;
-public class CreateTaskHandler: IRequestHandler<CreatTaskCommand, int>
+//public record CreatTaskCommand(string Title, string Description) : IRequest<int>;
+
+public class CreateTaskCommand: IRequest<int>
+{
+    public string Title { get; set; }
+    public string Description { get; set; }
+}
+
+public class CreateTaskHandler: IRequestHandler<CreateTaskCommand, int>
 {
     private readonly AppDbContext _appDbContext;
 
@@ -13,7 +20,7 @@ public class CreateTaskHandler: IRequestHandler<CreatTaskCommand, int>
         _appDbContext = appDbContext;
     }
 
-    public async Task<int> Handle (CreatTaskCommand request, CancellationToken ct)
+    public async Task<int> Handle (CreateTaskCommand request, CancellationToken ct)
     {
         var taskItem = new TaskItem
         {
