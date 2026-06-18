@@ -1,0 +1,6 @@
+@TaskManagement_CQRS_Pattern.Api_HostAddress = http://localhost:5037
+
+GET {{TaskManagement_CQRS_Pattern.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
